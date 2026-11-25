@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#20282a">
+    <title>Yönetim Paneli | Tunç Elektrik</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/admin.css">
+    <script src="/admin.js" defer></script>
+  </head>
+  <body>
+    <main class="admin-login" id="admin-login">
+      <a class="admin-brand" href="/">
+        <span class="brand-mark">ϟ</span>
+        <span><b>TUNÇ</b><small>YÖNETİM SİSTEMİ</small></span>
+      </a>
+      <div class="login-card">
+        <span class="overline">YETKİLİ ERİŞİMİ</span>
+        <h1>Yönetici girişi<span>.</span></h1>
+        <p>Mağaza yönetim paneline devam etmek için giriş yap.</p>
+        <form id="admin-login-form">
+          <label>Kullanıcı adı<input name="username" autocomplete="username" required></label>
+          <label>Şifre<input name="password" type="password" autocomplete="current-password" required></label>
+          <button type="submit" class="button-primary">Giriş Yap <span>→</span></button>
+          <div class="form-message" id="login-message" role="status"></div>
+        </form>
+        <a class="back-link" href="/">← Mağazaya dön</a>
+      </div>
+      <span class="login-version">TUNÇ / ADMIN CONSOLE / 1.0.0</span>
+    </main>
+
+    <div class="admin-app" id="admin-app" hidden>
+      <aside class="sidebar">
+        <a class="admin-brand" href="/">
+          <span class="brand-mark">ϟ</span>
+          <span><b>TUNÇ</b><small>ADMIN CONSOLE</small></span>
+        </a>
+        <span class="sidebar-label">MAĞAZA</span>
+        <nav class="admin-nav" aria-label="Yönetim menüsü">
+          <button class="nav-item active" type="button" data-view="dashboard"><span>▦</span> Genel Bakış</button>
+          <button class="nav-item" type="button" data-view="products"><span>▤</span> Ürünler</button>
+          <button class="nav-item" type="button" data-view="categories"><span>⌘</span> Kategoriler</button>
+          <button class="nav-item" type="button" data-view="orders"><span>▧</span> Siparişler</button>
+          <button class="nav-item" type="button" data-view="customers"><span>◎</span> Müşteriler</button>
+          <button class="nav-item" type="button" data-view="reviews"><span>★</span> Yorumlar</button>
+          <button class="nav-item" type="button" data-view="coupons"><span>%</span> Kuponlar</button>
+          <button class="nav-item" type="button" data-view="database"><span>▣</span> Veritabanı</button>
+        </nav>
+        <div class="sidebar-bottom">
+          <span class="admin-status"><i></i> SİSTEM AKTİF</span>
+          <a href="/">← Mağazayı görüntüle</a>
+        </div>
+      </aside>
+
+      <main class="admin-main">
+        <header class="topbar">
+          <div><span class="topbar-kicker">TUNÇ ELEKTRİK & ELEKTRONİK</span><h1 id="page-title">Genel Bakış</h1></div>
+          <div class="admin-user"><span class="admin-avatar">A</span><span><b id="admin-name">Yönetici</b><small>Mağaza yöneticisi</small></span><button id="admin-logout" type="button">Çıkış</button></div>
+        </header>
+
+        <section class="admin-view active" id="view-dashboard">
+          <div class="stats-grid" id="stats-grid"></div>
+          <section class="panel">
+            <div class="panel-heading"><div><span class="overline">SON HAREKETLER</span><h2>Son siparişler</h2></div><button class="button-quiet" type="button" data-open-view="orders">Tüm siparişler →</button></div>
+            <div class="table-wrap"><table><thead><tr><th>SİPARİŞ</th><th>MÜŞTERİ</th><th>TARİH</th><th>DURUM</th><th>TUTAR</th></tr></thead><tbody id="recent-orders"></tbody></table></div>
+            <div class="empty-state" id="recent-orders-empty" hidden>Henüz sipariş alınmamış.</div>
+          </section>
+        </section>
+
+        <section class="admin-view" id="view-products">
+          <section class="panel">
+            <div class="panel-heading"><div><span class="overline">KATALOG</span><h2>Ürün yönetimi</h2></div><button class="button-primary compact" id="add-product" type="button">+ Yeni ürün</button></div>
+            <div class="table-wrap"><table><thead><tr><th>STOK KODU</th><th>ÜRÜN</th><th>KATEGORİ</th><th>FİYAT</th><th>STOK</th><th>DURUM</th><th></th></tr></thead><tbody id="products-table"></tbody></table></div>
+            <div class="empty-state" id="products-empty" hidden>Henüz ürün bulunmuyor.</div>
+          </section>
+        </section>
+
+        <section class="admin-view" id="view-categories">
+          <section class="panel">
+            <div class="panel-heading"><div><span class="overline">KATALOG DÜZENİ</span><h2>Kategori yönetimi</h2></div><button class="button-primary compact" id="add-category" type="button">+ Yeni kategori</button></div>
+            <div class="table-wrap"><table><thead><tr><th>KATEGORİ</th><th>KOD</th><th>AÇIKLAMA</th><th>ÜRÜN SAYISI</th><th>DURUM</th><th></th></tr></thead><tbody id="categories-table"></tbody></table></div>
+            <div class="empty-state" id="categories-empty" hidden>Henüz kategori bulunmuyor.</div>
+          </section>
+        </section>
+
+        <section class="admin-view" id="view-orders">
+          <section class="panel">
+            <div class="panel-heading"><div><span class="overline">SATIŞLAR</span><h2>Sipariş yönetimi</h2></div></div>
+            <div class="table-wrap"><table><thead><tr><th>SİPARİŞ</th><th>MÜŞTERİ</th><th>ÜRÜNLER</th><th>TESLİMAT</th><th>TARİH</th><th>TUTAR</th><th>DURUM</th></tr></thead><tbody id="orders-table"></tbody></table></div>
+            <div class="empty-state" id="orders-empty" hidden>Henüz sipariş bulunmuyor.</div>
+          </section>
+        </section>
+
+        <section class="admin-view" id="view-customers">
+          <section class="panel">
+            <div class="panel-heading"><div><span class="overline">ÜYELER</span><h2>Müşteri listesi</h2></div></div>
+            <div class="table-wrap"><table><thead><tr><th>MÜŞTERİ</th><th>E-POSTA</th><th>KAYIT TARİHİ</th><th>SİPARİŞ</th><th>TOPLAM HARCAMA</th><th></th></tr></thead><tbody id="customers-table"></tbody></table></div>
+            <div class="empty-state" id="customers-empty" hidden>Henüz üye kaydı bulunmuyor.</div>
+          </section>
+        </section>
+
+        <section class="admin-view" id="view-reviews">
+          <section class="panel">
+            <div class="panel-heading"><div><span class="overline">MODERASYON</span><h2>Ürün yorumları</h2></div><span class="panel-note" id="reviews-pending"></span></div>
+            <div class="table-wrap"><table><thead><tr><th>ÜRÜN</th><th>YAZAR</th><th>PUAN</th><th>YORUM</th><th>TARİH</th><th>DURUM</th><th></th></tr></thead><tbody id="reviews-table"></tbody></table></div>
+            <div class="empty-state" id="reviews-empty" hidden>Henüz yorum yok.</div>
+          </section>
+        </section>
+
+        <section class="admin-view" id="view-coupons">
+          <section class="panel">
+            <div class="panel-heading"><div><span class="overline">KAMPANYALAR</span><h2>Kupon yönetimi</h2></div><button class="button-primary compact" id="add-coupon" type="button">+ Yeni kupon</button></div>
+            <div class="table-wrap"><table><thead><tr><th>KOD</th><th>İNDİRİM</th><th>MİN. SEPET</th><th>KULLANIM</th><th>BİTİŞ</th><th>DURUM</th><th></th></tr></thead><tbody id="coupons-table"></tbody></table></div>
+            <div class="empty-state" id="coupons-empty" hidden>Henüz kupon bulunmuyor.</div>
+          </section>
+        </section>
+
+        <section class="admin-view" id="view-database">
+          <div class="database-intro">
+            <span class="overline">SQLITE / TUNCTECH.SQLITE</span>
+            <p>Mağazada tutulan kayıtları buradan inceleyin. Parola hash’leri ve oturum token’ları güvenlik için gizlenir.</p>
+          </div>
+          <div class="database-summary" id="database-summary"></div>
+          <section class="panel">
+            <div class="panel-heading database-heading">
+              <div><span class="overline">KAYIT GEZGİNİ</span><h2 id="database-table-title">Üye hesapları</h2></div>
+              <div class="database-heading-controls">
+                <label class="database-picker">Tablo
+                  <select id="database-table-select">
+                    <option value="customers">Üye hesapları</option>
+                    <option value="products">Ürünler</option>
+                    <option value="categories">Kategoriler</option>
+                    <option value="orders">Siparişler</option>
+                    <option value="order_items">Sipariş kalemleri</option>
+                    <option value="cart_items">Sepet kalemleri</option>
+                    <option value="favorites">Favoriler</option>
+                    <option value="sessions">Oturumlar</option>
+                    <option value="messages">İletişim mesajları</option>
+                    <option value="reviews">Ürün yorumları</option>
+                    <option value="product_images">Ürün görselleri</option>
+                    <option value="coupons">Kuponlar</option>
+                    <option value="admins">Yönetici hesapları</option>
+                    <option value="settings">Mağaza ayarları</option>
+                  </select>
+                </label>
+                <button class="button-primary compact" id="database-add" type="button">+ Kayıt ekle</button>
+              </div>
+            </div>
+            <div class="table-wrap database-table-wrap"><table><thead id="database-head"></thead><tbody id="database-rows"></tbody></table></div>
+            <div class="empty-state" id="database-empty" hidden>Bu tabloda kayıt bulunmuyor.</div>
+          </section>
+        </section>
+        <div class="admin-toast" id="admin-toast" role="status"></div>
+      </main>
+    </div>
+
+    <dialog class="editor-dialog" id="product-dialog">
+      <form class="editor-form" id="product-form">
+        <div class="editor-heading"><div><span class="overline">KATALOG KAYDI</span><h2 id="product-dialog-title">Yeni ürün</h2></div><button class="dialog-close" type="button" data-close>×</button></div>
+        <input type="hidden" name="id">
+        <label>Ürün adı<input name="name" required minlength="2" maxlength="160"></label>
+        <div class="form-grid">
+          <label>Stok kodu<input name="sku" required minlength="3" maxlength="50"></label>
+          <label>Kategori<select name="categoryId" required></select></label>
+          <label>Fiyat (TL)<input name="price" type="number" min="0" step="0.01" required></label>
+          <label>Stok adedi<input name="stock" type="number" min="0" step="1" required></label>
+        </div>
+        <label>İndirim öncesi fiyat (TL)<input name="compareAtPrice" type="number" min="0" step="0.01" placeholder="Boş bırakılırsa indirim yok"></label>
+        <label>Ürün etiketi<input name="badge" maxlength="40" placeholder="Örn. YENİ"></label>
+        <label>Açıklama<textarea name="description" rows="3" maxlength="2000"></textarea></label>
+        <label class="check-label"><input name="active" type="checkbox" checked> Mağazada yayında</label>
+        <div class="editor-actions"><button class="button-quiet" type="button" data-close>Vazgeç</button><button class="button-primary" type="submit">Kaydet</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="editor-dialog" id="category-dialog">
+      <form class="editor-form" id="category-form">
+        <div class="editor-heading"><div><span class="overline">KATALOG DÜZENİ</span><h2 id="category-dialog-title">Yeni kategori</h2></div><button class="dialog-close" type="button" data-close>×</button></div>
+        <input type="hidden" name="id">
+        <label>Kategori adı<input name="name" required minlength="2" maxlength="100"></label>
+        <label>Kategori kodu<input name="slug" required minlength="2" maxlength="100" pattern="[a-z0-9-]+"></label>
+        <label>Açıklama<input name="description" maxlength="500"></label>
+        <div class="form-grid">
+          <label>Sıralama<input name="sortOrder" type="number" step="1" value="0"></label>
+          <label class="check-label"><input name="active" type="checkbox" checked> Mağazada yayında</label>
+        </div>
+        <div class="editor-actions"><button class="button-quiet" type="button" data-close>Vazgeç</button><button class="button-primary" type="submit">Kaydet</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="editor-dialog" id="customer-dialog">
+      <form class="editor-form" id="customer-form">
+        <div class="editor-heading"><div><span class="overline">ÜYE HESABI</span><h2 id="customer-dialog-title">Hesabı düzenle</h2></div><button class="dialog-close" type="button" data-close>×</button></div>
+        <input type="hidden" name="id">
+        <label>Ad soyad<input name="name" required minlength="2" maxlength="100"></label>
+        <label>E-posta<input name="email" type="email" required maxlength="190"></label>
+        <label>Yeni şifre (isteğe bağlı)<input name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128"></label>
+        <p class="customer-edit-note">Şifre alanını boş bırakırsanız mevcut şifre değişmez.</p>
+        <div class="editor-actions"><button class="button-quiet" type="button" data-close>Vazgeç</button><button class="button-primary" type="submit">Kaydet</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="editor-dialog" id="coupon-dialog">
+      <form class="editor-form" id="coupon-form">
+        <div class="editor-heading"><div><span class="overline">KAMPANYA KAYDI</span><h2 id="coupon-dialog-title">Yeni kupon</h2></div><button class="dialog-close" type="button" data-close>×</button></div>
+        <input type="hidden" name="id">
+        <label>Kupon kodu<input name="code" required minlength="3" maxlength="24" pattern="[A-Za-z0-9_-]+" placeholder="Örn. TUNC10"></label>
+        <div class="form-grid">
+          <label>İndirim türü
+            <select name="discountType">
+              <option value="percent">Yüzde (%)</option>
+              <option value="fixed">Sabit tutar (TL)</option>
+            </select>
+          </label>
+          <label>İndirim değeri<input name="value" type="number" min="1" step="1" required placeholder="10 veya 100"></label>
+          <label>Min. sepet (TL)<input name="minOrder" type="number" min="0" step="0.01" value="0"></label>
+          <label>Kullanım limiti<input name="usageLimit" type="number" min="0" step="1" value="0" placeholder="0 = sınırsız"></label>
+        </div>
+        <label>Bitiş tarihi<input name="expiresAt" type="date"></label>
+        <label class="check-label"><input name="active" type="checkbox" checked> Kupon aktif</label>
+        <div class="editor-actions"><button class="button-quiet" type="button" data-close>Vazgeç</button><button class="button-primary" type="submit">Kaydet</button></div>
+      </form>
+    </dialog>
+
+    <dialog class="editor-dialog" id="database-dialog">
+      <form class="editor-form" id="database-form">
+        <div class="editor-heading"><div><span class="overline">VERİTABANI KAYDI</span><h2 id="database-dialog-title">Yeni kayıt</h2></div><button class="dialog-close" type="button" data-close>×</button></div>
+        <p class="database-form-note" id="database-dialog-note"></p>
+        <div class="editor-form-fields" id="database-form-fields"></div>
+        <div class="editor-actions"><button class="button-quiet" type="button" data-close>Vazgeç</button><button class="button-primary" type="submit">Kaydet</button></div>
+      </form>
+    </dialog>
+  </body>
+</html>

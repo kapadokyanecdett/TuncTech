@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e83c32">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M21.8 2 8.5 22h9.3L16.2 38 32 16h-9.8L25 2h-3.2Z' fill='%23e83c32'/%3E%3C/svg%3E">
+    <meta name="description" content="Tunç Elektrik ve Elektronik'te elektronik komponentler, Arduino, sensörler, kablolar ve daha fazlası.">
+    <title>Tunç Elektrik ve Elektronik | Üretimin Gücü</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="announcement">
+      <span>1.500 TL ve üzeri siparişlerde ücretsiz kargo</span>
+      <i aria-hidden="true"></i>
+      <span>Güvenli ödeme · Hızlı teslimat</span>
+    </div>
+
+    <header class="site-header">
+      <div class="header-main page-shell">
+        <a class="brand" href="/" aria-label="Tunç Elektrik ve Elektronik ana sayfa">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M21.8 2 8.5 22h9.3L16.2 38 32 16h-9.8L25 2h-3.2Z" fill="currentColor"/><path d="M5 8.5h8M3 14h6M29 27h7M26 32h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="brand-name"><strong>TUNÇ</strong><small>ELEKTRİK & ELEKTRONİK</small></span>
+        </a>
+
+        <form class="search" id="search-form" role="search">
+          <label class="sr-only" for="search-input">Ürün ara</label>
+          <input id="search-input" type="search" placeholder="Ürün, kategori veya marka arayın..." autocomplete="off">
+          <button type="submit" aria-label="Ara">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+          </button>
+        </form>
+
+        <div class="header-actions">
+          <button class="account-button" id="account-button" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c.7-4 3.2-6 7.5-6s6.8 2 7.5 6"/></svg>
+            <span>Giriş Yap</span><span class="chevron">⌄</span>
+          </button>
+          <button class="icon-button notification-button" type="button" aria-label="Bildirimler">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-2.5 7-2.5 9h17C20.5 16 18 16 18 9ZM10 21h4"/></svg>
+          </button>
+          <button class="cart-button" id="cart-button" type="button">
+            <span class="cart-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 11.1a2 2 0 0 0 2 1.6h8.7a2 2 0 0 0 1.9-1.5L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><b id="cart-count">0</b></span>
+            <span>Sepetim</span>
+          </button>
+          <button class="icon-button mobile-menu-toggle" id="mobile-menu-toggle" type="button" aria-label="Menüyü aç" aria-expanded="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav-wrap">
+        <nav class="main-nav page-shell" aria-label="Ana menü">
+          <div class="category-menu-wrap">
+            <button class="all-categories" id="category-toggle" type="button" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6v6H4zM14 5h6v6h-6zM4 15h6v5H4zM14 15h6v5h-6z"/></svg>
+              <span>Tüm Kategoriler</span><span class="chevron">⌄</span>
+            </button>
+            <div class="category-dropdown" id="category-dropdown">
+              <a href="#kategoriler" data-category-slug="arduino"><span>⌁</span> Arduino & Geliştirme Kartları</a>
+              <a href="#kategoriler" data-category-slug="sensor"><span>◉</span> Sensörler & Modüller</a>
+              <a href="#kategoriler" data-category-slug="components"><span>▤</span> Elektronik Komponentler</a>
+              <a href="#kategoriler" data-category-slug="power"><span>ϟ</span> Güç Kaynakları & Piller</a>
+              <a href="#kategoriler" data-category-slug="cables"><span>⌇</span> Kablo & Konnektörler</a>
+              <a href="#kategoriler" data-category-slug="tools"><span>⌘</span> Lehimleme & El Aletleri</a>
+            </div>
+          </div>
+          <a class="nav-link" href="#yeni-urunler">Yeni Ürünler</a>
+          <a class="nav-link" href="#firsatlar">Fırsatlar</a>
+          <a class="nav-link" href="/hakkimizda">Hakkımızda</a>
+          <a class="nav-link" href="/iletisim">İletişim</a>
+          <button class="nav-link mobile-account-link" id="nav-account" type="button">Giriş Yap / Hesabım</button>
+          <div class="nav-services">
+            <a class="service-link" href="#hizmetler"><span class="service-symbol red">ϟ</span><span>Teknik<br>Destek</span></a>
+            <a class="service-link" href="#hizmetler"><span class="service-symbol blue">⌘</span><span>Proje<br>Danışmanlığı</span></a>
+            <a class="service-link" href="#hizmetler"><span class="service-symbol dark">▧</span><span>Kurumsal<br>Satış</span></a>
+          </div>
+          <div class="locale-select">
+            <button type="button" aria-label="Dil Türkçe">🇹🇷 <span>TR</span><span class="chevron">⌄</span></button>
+            <button type="button" aria-label="Para birimi Türk Lirası"><span class="lira">₺</span><span>TL</span><span class="chevron">⌄</span></button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="hero" id="anasayfa" aria-label="Kampanyalar">
+        <article class="hero-slide active" data-slide="0">
+          <div class="hero-copy">
+            <span class="eyebrow"><span class="eyebrow-dot"></span> TUNÇ'TA BU HAFTA</span>
+            <p class="hero-kicker">FİKRİNİ HAYATA GEÇİR</p>
+            <h1>Üretimin<br><em>gücü</em> burada.</h1>
+            <p class="hero-description">İlk devrenden çalışan projeye,<br>ihtiyacın olan her komponent bir arada.</p>
+            <a class="hero-cta" href="#kategoriler">Kategorileri keşfet <span>→</span></a>
+            <span class="hero-index">01 <i>/</i> 03</span>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="art-grid"></div>
+            <span class="art-coordinate coordinate-one">PCB / 04.26.01</span>
+            <span class="art-coordinate coordinate-two">5V&nbsp; · &nbsp;3.3V&nbsp; · &nbsp;12V</span>
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <div class="circuit-board">
+              <span class="board-trace trace-one"></span><span class="board-trace trace-two"></span><span class="board-trace trace-three"></span>
+              <span class="chip-pin pin-top"></span><span class="chip-pin pin-bottom"></span><span class="chip-pin pin-left"></span><span class="chip-pin pin-right"></span>
+              <div class="chip"><span>ATmega</span><strong>328P</strong><i></i></div>
+              <div class="capacitor cap-one"><b></b><i></i></div><div class="capacitor cap-two"><b></b><i></i></div>
+              <div class="resistor resistor-one"><b></b></div><div class="resistor resistor-two"><b></b></div>
+              <div class="led led-one"><i></i></div><div class="led led-two"><i></i></div>
+              <div class="board-label label-one">R1</div><div class="board-label label-two">C4</div>
+              <div class="board-screw screw-one"></div><div class="board-screw screw-two"></div>
+            </div>
+            <div class="art-chip chip-float">ARDUINO<br><strong>READY</strong></div>
+            <div class="art-chip chip-voltage"><strong>3.3<span>V</span></strong><small>LOW POWER</small></div>
+            <span class="art-cross cross-one">+</span><span class="art-cross cross-two">+</span>
+            <span class="art-caption">COMPONENTS<br>FOR CREATORS</span>
+          </div>
+          <div class="hero-side-note">BİLEŞEN NO. 001 <span>● STOKTA</span></div>
+        </article>
+        <article class="hero-slide slide-alt" data-slide="1">
+          <div class="hero-copy">
+            <span class="eyebrow"><span class="eyebrow-dot"></span> PROJENE HEMEN BAŞLA</span>
+            <p class="hero-kicker">KODLA · ÜRET · GELİŞTİR</p>
+            <h1>Hayal et.<br><em>Bağlantı</em><br>bizden.</h1>
+            <p class="hero-description">Arduino kartları ve modüllerle<br>projeni bugün hayata geçir.</p>
+            <a class="hero-cta" href="#kategoriler">Geliştirme kartlarını gör <span>→</span></a>
+            <span class="hero-index">02 <i>/</i> 03</span>
+          </div>
+          <div class="hero-art art-alt" aria-hidden="true"><div class="art-grid"></div><div class="alt-board"><span>UNO</span><b>R3</b><i></i><em></em></div><span class="art-coordinate coordinate-one">DEV KIT / REV.03</span><span class="art-coordinate coordinate-two">DIGITAL I/O · PWM</span><span class="alt-spark">ϟ</span></div>
+          <div class="hero-side-note">GELİŞTİRME KİTLERİ <span>● KEŞFET</span></div>
+        </article>
+        <article class="hero-slide slide-alt-two" data-slide="2">
+          <div class="hero-copy">
+            <span class="eyebrow"><span class="eyebrow-dot"></span> ATÖLYENİN YENİ FAVORİSİ</span>
+            <p class="hero-kicker">DOĞRU ÖLÇ · GÜVENLE ÜRET</p>
+            <h1>Her detayda<br><em>tam isabet.</em></h1>
+            <p class="hero-description">Sensörlerden ölçü aletlerine,<br>atölyene güvenilir çözümler.</p>
+            <a class="hero-cta" href="#kategoriler">Sensörleri keşfet <span>→</span></a>
+            <span class="hero-index">03 <i>/</i> 03</span>
+          </div>
+          <div class="hero-art art-alt-two" aria-hidden="true"><div class="art-grid"></div><div class="radar"><div class="radar-sweep"></div><span class="radar-center"></span><i></i><b></b></div><span class="art-coordinate coordinate-one">SENSORS / DETECTORS</span><span class="art-coordinate coordinate-two">PRECISION 99.8%</span><span class="radar-reading">24.6<small>°C</small></span></div>
+          <div class="hero-side-note">SENSÖR SERİSİ <span>● YENİ</span></div>
+        </article>
+        <button class="hero-arrow hero-prev" type="button" aria-label="Önceki kampanya">‹</button>
+        <button class="hero-arrow hero-next" type="button" aria-label="Sonraki kampanya">›</button>
+        <div class="hero-dots" role="tablist" aria-label="Kampanya seçimi">
+          <button type="button" class="hero-dot active" aria-label="1. kampanya" aria-selected="true"></button>
+          <button type="button" class="hero-dot" aria-label="2. kampanya" aria-selected="false"></button>
+          <button type="button" class="hero-dot" aria-label="3. kampanya" aria-selected="false"></button>
+        </div>
+      </section>
+
+      <div class="campaign-strip" aria-label="Öne çıkan kampanyalar">
+        <a class="campaign-pill campaign-active" href="/urunler?indirim=1"><span class="pill-index">01</span><span>Haftanın<br>Seçimleri</span><b>→</b></a>
+        <a class="campaign-pill" href="/urunler?siralama=newest"><span class="pill-index">02</span><span>Yeni<br>Gelenler</span><b>↗</b></a>
+        <a class="campaign-pill" href="/urunler?kategori=arduino"><span class="pill-index">03</span><span>Arduino<br>Dünyası</span><b>↗</b></a>
+        <a class="campaign-pill" href="/urunler?kategori=sensor"><span class="pill-index">04</span><span>Sensör &<br>Modüller</span><b>↗</b></a>
+        <a class="campaign-pill" href="/urunler?kategori=tools"><span class="pill-index">05</span><span>Atölye<br>Ekipmanları</span><b>↗</b></a>
+        <a class="campaign-pill" href="/iletisim"><span class="pill-index">06</span><span>Kurumsal<br>Çözümler</span><b>↗</b></a>
+        <a class="campaign-pill campaign-offer" href="#firsatlar"><span class="offer-symbol">%</span><span>Günün<br>Fırsatları</span><b>↗</b></a>
+      </div>
+
+      <section class="category-section" id="kategoriler">
+        <div class="section-heading">
+          <div><span class="section-overline">İHTİYACINA GÖRE KEŞFET</span><h2>Popüler kategoriler<span>.</span></h2></div>
+          <a class="text-link" href="/urunler">Tüm kategoriler <span>→</span></a>
+        </div>
+        <div class="category-grid" id="category-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="benefits" id="hizmetler" aria-label="Alışveriş avantajları">
+        <div class="benefit"><span class="benefit-icon">↗</span><span><strong>Hızlı gönderim</strong><small>Hafta içi 14.00'e kadar</small></span></div>
+        <div class="benefit"><span class="benefit-icon">▣</span><span><strong>Güvenli ödeme</strong><small>256-bit SSL koruması</small></span></div>
+        <div class="benefit"><span class="benefit-icon">⌁</span><span><strong>Teknik destek</strong><small>Projen için yanındayız</small></span></div>
+        <div class="benefit"><span class="benefit-icon">₺</span><span><strong>Ücretsiz kargo</strong><small>1.500 TL üzeri siparişlerde</small></span></div>
+      </section>
+
+      <section class="products-section deals-section" id="firsatlar">
+        <div class="section-heading">
+          <div><span class="section-overline">İNDİRİMLİ ÜRÜNLER</span><h2>Fırsatlar<span>.</span></h2></div>
+          <a class="text-link" href="/urunler">Tüm ürünler <span>→</span></a>
+        </div>
+        <div class="product-grid" id="deals-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="products-section" id="yeni-urunler">
+        <div class="section-heading">
+          <div><span class="section-overline">ATÖLYEYE YENİ KATILANLAR</span><h2>Yeni ürünler<span>.</span></h2></div>
+          <a class="text-link" href="/urunler">Tüm ürünler <span>→</span></a>
+        </div>
+        <div class="product-grid" id="product-grid" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell footer-inner">
+        <a class="brand footer-brand" href="/"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M21.8 2 8.5 22h9.3L16.2 38 32 16h-9.8L25 2h-3.2Z" fill="currentColor"/></svg></span><span class="brand-name"><strong>TUNÇ</strong><small>ELEKTRİK & ELEKTRONİK</small></span></a>
+        <p>Fikirden devreye, üretimin her adımında yanınızdayız.</p>
+        <a href="/iletisim">Bize ulaşın <span>→</span></a>
+        <a class="admin-footer-link" href="/admin">Yönetici paneli</a>
+        <span class="footer-copy">© 2026 Tunç Elektrik ve Elektronik</span>
+      </div>
+    </footer>
+
+    <dialog class="site-dialog account-dialog" id="account-dialog">
+      <div class="dialog-panel">
+        <button class="dialog-close" type="button" data-close-dialog aria-label="Kapat">×</button>
+        <div class="dialog-brand"><span class="brand-mark">ϟ</span><span><b>TUNÇ</b><small>HESABIN</small></span></div>
+        <section id="auth-view">
+          <span class="dialog-kicker">ÜYE ALANI</span>
+          <h2 id="auth-title">Tekrar hoş geldin.</h2>
+          <p class="dialog-description" id="auth-description">Siparişlerini takip etmek için hesabına giriş yap.</p>
+          <form class="dialog-form" id="auth-form">
+            <label id="auth-name-wrap" hidden>Ad Soyad<input name="name" autocomplete="name" minlength="2" maxlength="100"></label>
+            <label>E-posta<input name="email" type="email" autocomplete="email" required></label>
+            <label>Şifre<input name="password" type="password" autocomplete="current-password" minlength="8" required></label>
+            <button class="primary-button" type="submit" id="auth-submit">Giriş Yap <span>→</span></button>
+          </form>
+          <button class="switch-auth" id="switch-auth" type="button">Hesabın yok mu? <b>Kayıt ol</b></button>
+          <a class="admin-login-link" href="/admin">Yönetici girişi →</a>
+        </section>
+        <section id="account-view" hidden>
+          <span class="dialog-kicker">HESAP ÖZETİ</span>
+          <h2 id="account-heading">Merhaba.</h2>
+          <p class="dialog-description" id="account-email"></p>
+          <div class="account-orders" id="account-orders"></div>
+          <button class="secondary-button" id="logout-button" type="button">Çıkış Yap</button>
+        </section>
+      </div>
+    </dialog>
+
+    <dialog class="site-dialog product-dialog" id="product-dialog" aria-labelledby="product-detail-title">
+      <div class="product-detail-panel">
+        <button class="dialog-close" type="button" data-close-dialog aria-label="Kapat">×</button>
+        <div class="product-detail-art" id="product-detail-art"></div>
+        <div class="product-detail-copy">
+          <span class="dialog-kicker">ÜRÜN DETAYI</span>
+          <span class="product-brand" id="product-detail-sku"></span>
+          <h2 id="product-detail-title"></h2>
+          <p class="product-detail-category" id="product-detail-category"></p>
+          <p class="product-detail-rating" id="product-detail-rating"></p>
+          <p class="product-detail-description" id="product-detail-description"></p>
+          <div class="product-detail-purchase">
+            <div><strong id="product-detail-price"></strong><small id="product-detail-stock"></small></div>
+            <button class="primary-button" id="product-detail-add" type="button">Sepete ekle <span>→</span></button>
+          </div>
+        </div>
+        <div class="product-reviews" id="product-reviews">
+          <div class="reviews-head"><h3>Değerlendirmeler</h3><span id="reviews-summary"></span></div>
+          <div class="review-list" id="review-list"></div>
+          <form class="review-form" id="review-form" hidden>
+            <span class="review-form-title">Bu ürünü değerlendir</span>
+            <input type="hidden" name="rating" value="5">
+            <div class="rating-input" id="rating-input" role="radiogroup" aria-label="Ürün puanı">
+              <button type="button" class="rating-star" data-value="1" aria-label="1 yıldız">★</button>
+              <button type="button" class="rating-star" data-value="2" aria-label="2 yıldız">★</button>
+              <button type="button" class="rating-star" data-value="3" aria-label="3 yıldız">★</button>
+              <button type="button" class="rating-star" data-value="4" aria-label="4 yıldız">★</button>
+              <button type="button" class="rating-star" data-value="5" aria-label="5 yıldız">★</button>
+            </div>
+            <textarea name="body" rows="2" maxlength="1000" placeholder="Deneyimini paylaş (isteğe bağlı)"></textarea>
+            <button class="primary-button" type="submit">Yorumu gönder <span>→</span></button>
+          </form>
+          <p class="review-note" id="review-note"></p>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="site-dialog cart-dialog" id="cart-dialog">
+      <div class="cart-panel">
+        <div class="cart-heading">
+          <div><span class="dialog-kicker">ALIŞVERİŞ LİSTEN</span><h2>Sepetim<span>.</span></h2></div>
+          <button class="dialog-close" type="button" data-close-dialog aria-label="Kapat">×</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+          <div class="cart-coupon" id="cart-coupon">
+            <form class="coupon-form" id="coupon-form">
+              <input name="code" placeholder="Kupon kodu" autocomplete="off" maxlength="24" aria-label="Kupon kodu">
+              <button type="submit" class="secondary-button">Uygula</button>
+            </form>
+            <p class="coupon-message" id="coupon-message" role="status"></p>
+            <div class="coupon-applied" id="coupon-applied" hidden>
+              <span><b id="coupon-applied-code"></b> kuponu uygulandı</span>
+              <button type="button" class="coupon-remove" id="coupon-remove">Kaldır</button>
+            </div>
+          </div>
+          <div class="cart-total"><span>Ara toplam</span><strong id="cart-total">0,00 TL</strong></div>
+          <div class="cart-discount" id="cart-discount" hidden><span>Kupon indirimi</span><strong id="cart-discount-value">0,00 TL</strong></div>
+          <div class="cart-grand" id="cart-grand" hidden><span>Ödenecek tutar</span><strong id="cart-grand-value">0,00 TL</strong></div>
+          <div class="shipping-meter" id="shipping-meter" hidden>
+            <div class="shipping-caption"><span id="shipping-message"></span><strong id="shipping-progress-label"></strong></div>
+            <div class="shipping-track" id="shipping-track" role="progressbar" aria-label="Ücretsiz kargo ilerlemesi" aria-valuemin="0" aria-valuemax="1500" aria-valuenow="0">
+              <span id="shipping-progress"></span>
+            </div>
+          </div>
+          <p class="cart-login-note" id="cart-login-note">Siparişi tamamlamak için giriş yapmalısın.</p>
+          <button class="secondary-button cart-login-button" id="cart-login" type="button">Giriş yap / Kayıt ol</button>
+          <form class="checkout-form" id="checkout-form" hidden>
+            <label>Teslim alacak kişi<input name="recipientName" autocomplete="name" required></label>
+            <label>Telefon<input name="phone" type="tel" autocomplete="tel" required></label>
+            <label>İl<input name="city" autocomplete="address-level1" required></label>
+            <label>Açık adres<textarea name="address" rows="2" autocomplete="street-address" required></textarea></label>
+            <button class="primary-button" type="submit">Siparişi Tamamla <span>→</span></button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

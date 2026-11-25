@@ -1,0 +1,10 @@
+{
+  "name": "tunc-elektrik-elektronik",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tunç Elektrik ve Elektronik e-ticaret uygulaması",
+  "scripts": {
+    "start": "node server.js",
+    "db:reset": "node reset-db.js --confirm"
+  }
+}
